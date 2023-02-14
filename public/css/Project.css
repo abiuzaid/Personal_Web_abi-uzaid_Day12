@@ -1,0 +1,93 @@
+.container-fluid{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: darkgrey;
+}
+.card {
+    background-color: darkgrey;
+    padding: 30px;
+    width: 50%;
+    height: 700px;
+    margin: 100px auto;
+    border: none;
+}
+textarea {
+    resize: none;
+    height: 150px;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 5px rgba(29,29,29,0.25);
+}
+label {
+    font-weight: bold;
+}
+.header {
+    margin-top: -75px;
+    text-align: center;
+}
+.card-body {
+    margin-top: -70px;
+}
+.mini {
+    margin-bottom: -1px;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 5px 5px rgba(29,29,29,0.25);
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+#project-date-container {
+    display: flex;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+#project-date-container div:nth-child(1) {
+    margin-right: 5px;
+}
+#project-date-container div:nth-child(2) {
+    margin-left: 5px;
+}
+#technologies-container input {
+    width: fit-content;
+}
+#technologies-container > div {
+    display: flex;
+    margin-top: 10px;
+}
+#technologies-container > div > div {
+    width: 50%;
+}
+#technologies-container > div label {
+    color: rgba(29,29,29,0.75);
+}
+#upload-image-container > label:nth-child(2) > input {
+    display: none;
+}
+#upload-image-container > label:nth-child(2) {
+    display: block;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 5px 5px rgba(29,29,29,0.25);
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#upload-image-container > label:nth-child(2) > span {
+    background-color: rgba(29,29,29,0.2);
+    padding: 10px;
+    border-radius: 5px;
+    color: rgba(29,29,29,0.5);
+}
+#upload-image-container > label:nth-child(2) > i {
+    margin-right: 10px;
+    color: #001736;
+}
+#upload-image-container:hover > label:nth-child(2) > i {
+    color: #006bff;
+}

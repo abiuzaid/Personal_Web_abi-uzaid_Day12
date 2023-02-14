@@ -1,0 +1,7 @@
+Setelah mempelajari Authentication,
+maka tugas kalian adalah mengimplementasikan Authentication.
+Tampilan Register dan Login dapat dilihat pada mockup
+
+Conditional Interface (html):
+- Navigation Bar (Register, Login, & Add Project)
+- Card Project (Edit & Delete)
