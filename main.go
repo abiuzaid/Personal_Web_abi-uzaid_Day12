@@ -58,6 +58,7 @@ func main() {
 	connection.DatabaseConnect()
 
 	route.PathPrefix("/public/").Handler(http.StripPrefix("/public/", http.FileServer(http.Dir("./public/"))))
+	route.PathPrefix("/uploads/").Handler(http.StripPrefix("/uploads/", http.FileServer(http.Dir("./uploads/"))))
 
 	route.HandleFunc("/", Home).Methods("GET")
 	route.HandleFunc("/contact-me", ContactMe).Methods("GET")
@@ -321,11 +322,11 @@ func AddNewProject(w http.ResponseWriter, r *http.Request) {
 	Technology := r.Form["technology"]
 	dataContext := r.Context().Value("dataFile")
 	image := dataContext.(string)
-	var store = sessions.NewCookieStore([]byte("SESSIONID"))
-	session, _ := store.Get(r, "SESSION_ID")
-	author := session.Values["ID"].(int)
+	// var store = sessions.NewCookieStore([]byte("SESSIONID"))
+	// session, _ := store.Get(r, "SESSION_ID")
+	// author := session.Values["ID"].(int)
 
-	_, err = connection.Conn.Exec(context.Background(), "INSERT INTO project(title, start_date, end_date, description, technologies, author_id, image) VALUES ($1, $2, $3, $4, $5, $6, $7)", ProjectName, StartDate, EndDate, Description, Technology, author, image)
+	_, err = connection.Conn.Exec(context.Background(), "INSERT INTO project(title, start_date, end_date, description, technologies, author_id, image) VALUES ($1, $2, $3, $4, $5, $6, $7)", ProjectName, StartDate, EndDate, Description, Technology, user.Id, image)
 
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -364,7 +365,7 @@ func UpdateProjectPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	UpdateData := Project{}
-	err = connection.Conn.QueryRow(context.Background(), "SELECT * FROM project WHERE id=$1", id).Scan(&UpdateData.Id, &UpdateData.ProjectName, &UpdateData.StartDate, &UpdateData.EndDate, &UpdateData.Description, &UpdateData.Technology, &UpdateData.Image)
+	err = connection.Conn.QueryRow(context.Background(), "SELECT * FROM project WHERE id=$1", id).Scan(&UpdateData.Id, &UpdateData.ProjectName, &UpdateData.StartDate, &UpdateData.EndDate, &UpdateData.Description, &UpdateData.Technology, &UpdateData.Image, &UpdateData.Author)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("message : " + err.Error()))

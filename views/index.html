@@ -122,7 +122,7 @@
               <div class="container gap-4 d-flex justify-content-between align-items-center flex-wrap">
                 {{range $index, $project := .Projects}}
                 <div class="card project-container p-3 shadow bg-white border-0">
-                  <img src= "/public/images/foto1.jpg"  class="card-img-top rounded object-fit-cover" alt="img">
+                  <img src= "http://localhost:5000/uploads/{{$project.Image}}"  class="card-img-top rounded object-fit-cover" alt="img">
                   <div class="card-body px-0 pb-0 overflow-hidden">
                     <a href="/project/{{$index}}" target="_blank" class="text-decoration-none"><h5 class="card-title fw-bold mb-0">{{$project.ProjectName}}</h5></a>
                     <div class="text-secondary"></div>
